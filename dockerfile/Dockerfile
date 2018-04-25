@@ -6,7 +6,8 @@
 
 FROM phusion/baseimage:0.9.22 
 
-# Set correct environment variables. ENV HOME /root
+# Set correct environment variables.
+ENV HOME /root
 
 # Update OS.
 # RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
