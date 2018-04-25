@@ -23,5 +23,8 @@ RUN apt-get install -y curl git htop unzip vim wget byobu
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN dpkg-reconfigure -f noninteractive dash
 
+#Prueba para ver las modificaciones en la nueva imagen
+CMD ["mkdir /estoeslabomba"]
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
