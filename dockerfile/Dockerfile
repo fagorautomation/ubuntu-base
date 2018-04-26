@@ -4,13 +4,13 @@
 # https://github.com/phusion/baseimage-docker/blob/master/Changelog.md 
 # for a list of version numbers. 
 
-FROM phusion/baseimage:0.9.22 
+FROM phusion/baseimage:0.10.1 
 
 # Set correct environment variables.
 ENV HOME /root
 
 # Update OS.
-# RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
 RUN apt-get update
 
 # upgrade 
