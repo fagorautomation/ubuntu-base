@@ -26,8 +26,5 @@ RUN dpkg-reconfigure -f noninteractive dash
 #Creo directorio donde se mapea el SDK del Host
 RUN mkdir /sdkdir
 
-#Ejecuto el script para el environment del Yocto SDK
-. /sdkdir/environment-setup-corei7-64-poky-linux
-
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
