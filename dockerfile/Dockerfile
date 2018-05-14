@@ -28,3 +28,5 @@ RUN mkdir /sdkdir
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
+# Ejecutar el script que configura el environment del conatiner para poder usar Yocto SDK
+CMD [". /sdkdir/environment-setup-corei7-64-poky-linux"]
