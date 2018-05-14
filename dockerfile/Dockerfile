@@ -23,8 +23,11 @@ RUN apt-get install -y curl git htop unzip vim wget byobu
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN dpkg-reconfigure -f noninteractive dash
 
-#Prueba para ver las modificaciones en la nueva imagen
-RUN mkdir /estoeslabomba
+#Creo directorio donde se mapea el SDK del Host
+RUN mkdir /sdkdir
+
+#Ejecuto el script para el environment del Yocto SDK
+. /sdkdir/environment-setup-corei7-64-poky-linux
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
