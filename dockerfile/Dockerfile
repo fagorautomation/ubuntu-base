@@ -23,14 +23,8 @@ RUN apt-get install -y curl git htop unzip vim wget byobu
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN dpkg-reconfigure -f noninteractive dash
 
-#Creo directorio donde se mapea el SDK del Host
-RUN mkdir /sdkdir
+# Copio el script que se va a ejecutar
+COPY run.sh /
 
-# Ejecutar el script que configura el environment del conatiner para poder usar Yocto SDK
-CMD ["echo","Setting up the environment"]
-CMD ["source","/sdkdir/environment-setup-corei7-64-poky-linux"]
-CMD ["echo","Environment is set up"]
-
-# Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+ENTRYPOINT ["/run.sh"]
 
