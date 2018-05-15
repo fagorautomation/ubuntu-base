@@ -25,6 +25,7 @@ RUN dpkg-reconfigure -f noninteractive dash
 
 # Copio el script que se va a ejecutar
 COPY run.sh /
+RUN chmod +x /run.sh
 
 ENTRYPOINT ["/run.sh"]
 
