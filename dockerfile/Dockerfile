@@ -17,15 +17,12 @@ RUN apt-get update
 # RUN apt-get -y upgrade 
 
 # Install basic packages. 
-RUN apt-get install -y curl git htop unzip vim wget byobu
+RUN apt-get install -y curl git htop unzip vim wget byobu make
 
 # use bash instead of dash
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
-RUN dpkg-reconfigure -f noninteractive dash
+RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
-# Copio el script que se va a ejecutar
-COPY run.sh /
-RUN chmod +x /run.sh
 
-ENTRYPOINT ["/run.sh"]
+CMD ["/sbin/my_init"]
 
