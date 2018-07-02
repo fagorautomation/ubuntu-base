@@ -1,2 +1,2 @@
 # ubuntu-base
-Ubuntu-base docker customization
+Ubuntu-base (16.04) docker container.
