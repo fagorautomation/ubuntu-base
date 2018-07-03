@@ -23,6 +23,16 @@ RUN apt-get install -y curl git htop unzip vim wget byobu make
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
+# define default user developer
+RUN mkdir /home/developer && \
+echo "developer:x:1000:1000:Fagor Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+echo "developer:x:1000:" >> /etc/group && \
+chown developer:developer -R /home/developer && \
+echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER developer
+ENV HOME /home/developer
+WORKDIR /home/developer
 
 CMD ["/sbin/my_init"]
 
